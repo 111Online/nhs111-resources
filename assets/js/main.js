@@ -1,3 +1,1 @@
-import foo from "./modules/foo";
-
-console.log(foo);
+import "nhsuk-frontend/packages/nhsuk";
