@@ -4,6 +4,11 @@ title: NHS 111 online resources
 
 {% extends "./nhsuk-frontend.njk" %}
 
+{% from 'components/header/macro.njk' import header %}
+{% from 'components/footer/macro.njk' import footer %}
+
+{% block header %}{{ header() }}{% endblock %}
+
 {% block body %}
   <div class="nhsuk-width-container">
     <main class="nhsuk-main-wrapper" id="maincontent">
@@ -11,3 +16,5 @@ title: NHS 111 online resources
     </main>
   </div>    
 {% endblock %}
+
+{% block footer %}{{ footer() }}{% endblock %}

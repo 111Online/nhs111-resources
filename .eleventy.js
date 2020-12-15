@@ -4,8 +4,7 @@ const path = require("path");
 module.exports = function (eleventyConfig) {
   const nunjucksEnvironment = new Nunjucks.Environment(
     new Nunjucks.FileSystemLoader([
-      "_includes",
-      "_layouts",
+      "src",
       path.join(
         path.dirname(require.resolve("nhsuk-frontend/package.json")),
         "packages"
@@ -21,6 +20,7 @@ module.exports = function (eleventyConfig) {
     output: "dist",
     input: "src",
     layouts: "_layouts",
+    includes: "_includes",
   };
 
   return eleventyConfig;

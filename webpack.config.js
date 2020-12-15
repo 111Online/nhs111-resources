@@ -120,7 +120,7 @@ const webpackConfig = {
     new MiniCssExtractPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
-      reportFilename: "../bundle-report.html",
+      reportFilename: "../../bundle-report.html",
       openAnalyzer: false,
     }),
   ],
