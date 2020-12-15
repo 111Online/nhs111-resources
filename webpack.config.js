@@ -4,32 +4,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 
-// Workaround for https://github.com/webpack/webpack/issues/7300 whereby
-// webpack outputs empty chunks when used with the css extract plugin
-// See exact solution at https://github.com/webpack/webpack/issues/7300#issuecomment-413959996
-// Without this workaround, the css extract solution leaves behind empty JavaScript files
-// Once this ticket has been resolved this workaround can be removed
-class MiniCssExtractPluginCleanUp {
-  constructor(deleteWhere = /css.*\.js(\.map)?$/) {
-    this.shouldDelete = new RegExp(deleteWhere);
-  }
-  apply(compiler) {
-    compiler.hooks.emit.tapAsync(
-      "MiniCssExtractPluginCleanup",
-      (compilation, callback) => {
-        Object.keys(compilation.assets).forEach((asset) => {
-          if (this.shouldDelete.test(asset)) {
-            delete compilation.assets[asset];
-          }
-        });
-        callback();
-      }
-    );
-  }
-}
-
 // Collect top level js and scss entrypoints
-const files = glob.sync(path.join("assets/{js,scss}/*.{js,scss}"));
+const files = glob.sync(path.join("src/assets/{js,scss}/*.{js,scss}"));
 const entrypoints = files.reduce((accumulator, value) => {
   const assetExtension = path.extname(value);
   const extMap = {
@@ -53,7 +29,7 @@ const webpackConfig = {
   bail: false,
   devtool: "source-map",
   output: {
-    path: path.resolve("dist"),
+    path: path.resolve("dist/assets"),
   },
   resolve: {
     modules: ["node_modules"],
@@ -70,9 +46,12 @@ const webpackConfig = {
     version: false,
     performance: false,
   },
-  // externals: {
-  //   jquery: 'jQuery'
-  // },
+  watchOptions: {
+    poll: 1000,
+  },
+  optimization: {
+    removeEmptyChunks: true,
+  },
   entry: entrypoints,
   module: {
     rules: [
@@ -139,10 +118,9 @@ const webpackConfig = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new MiniCssExtractPluginCleanUp(),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
-      reportFilename: "../../bundle-report.html",
+      reportFilename: "../bundle-report.html",
       openAnalyzer: false,
     }),
   ],
