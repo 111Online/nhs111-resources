@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "npm-run-all clean:*",
+    "clean:empty-dist": "rimraf dist",
+    "clean:create-dist": "mkdir dist",
     "prebuild": "npm run clean",
-    "build": "npm-run-all build:*",
+    "build": "npm-run-all build:* nhs-assets",
     "build:eleventy": "eleventy",
     "build:webpack": "webpack",
     "predev": "npm run clean",
-    "dev": "npm-run-all --parallel dev:*",
+    "dev": "npm-run-all --parallel dev:* nhs-assets",
     "dev:webpack": "webpack --watch",
-    "dev:eleventy": "ELEVENTY_ENV=development eleventy --serve --watch"
+    "dev:eleventy": "ELEVENTY_ENV=development eleventy --serve --watch",
+    "nhs-assets": "cp -r node_modules/nhsuk-frontend/packages/assets dist"
   },
   "dependencies": {
     "@11ty/eleventy": "^0.11.1",
