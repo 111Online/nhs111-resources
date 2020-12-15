@@ -23,5 +23,7 @@ module.exports = function (eleventyConfig) {
     includes: "_includes",
   };
 
+  eleventyConfig.pathPrefix = "/nhs111-resources";
+
   return eleventyConfig;
 };
