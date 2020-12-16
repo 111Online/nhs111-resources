@@ -2,12 +2,14 @@ const Nunjucks = require("nunjucks");
 const path = require("path");
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setTemplateFormats(["njk", "md", "png", "jpg", "pdf", "avi"]);
+
   const nunjucksEnvironment = new Nunjucks.Environment(
     new Nunjucks.FileSystemLoader([
       "src",
       path.join(
         path.dirname(require.resolve("nhsuk-frontend/package.json")),
-        "packages"
+        "packages/components"
       ),
     ])
   );

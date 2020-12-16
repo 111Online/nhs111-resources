@@ -5,14 +5,33 @@
 
 {% set baseUrl = '/nhs111-resources' %}
 
-{% from 'components/header/macro.njk' import header %}
-{% from 'components/footer/macro.njk' import footer %}
+{% from 'header/macro.njk' import header %}
+{% from 'footer/macro.njk' import footer %}
+{% from 'skip-link/macro.njk' import skipLink %}
 
-{% block header %}{{ header() }}{% endblock %}
+{% block header %}
+  {{ skipLink({
+    "href": "#maincontent",
+    "text": "Skip to main content"
+  }) }}
+
+  {{ header({
+    "service": {
+      "name": "111 online resources"
+    },
+    "showNav": "true",
+    "primaryLinks": [
+      {
+        "url"  : "https://111.nhs.uk",
+        "label" : "Go to 111 online"
+      }
+    ]
+  }) }}
+{% endblock %}
 
 {% block body %}
   <div class="nhsuk-width-container">
-    <main class="nhsuk-main-wrapper" id="maincontent">
+    <main class="nhsuk-main-wrapper" id="maincontent">     
       {{ content | safe }}
     </main>
   </div>    

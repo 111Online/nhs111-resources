@@ -14,7 +14,8 @@
     "dev": "npm-run-all --parallel dev:* nhs-assets",
     "dev:webpack": "webpack --watch",
     "dev:eleventy": "ELEVENTY_ENV=development eleventy --serve --watch",
-    "nhs-assets": "cp -r node_modules/nhsuk-frontend/packages/assets dist"
+    "nhs-assets": "cp -r node_modules/nhsuk-frontend/packages/assets dist",
+    "start": "npm run dev"
   },
   "dependencies": {
     "@11ty/eleventy": "^0.11.1",
