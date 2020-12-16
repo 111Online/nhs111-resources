@@ -25,7 +25,6 @@ if (process.env.NODE_ENV !== "production") {
 
 // Construct the webpack config
 const webpackConfig = {
-  mode: process.env.NODE_ENV,
   bail: false,
   devtool: "source-map",
   output: {

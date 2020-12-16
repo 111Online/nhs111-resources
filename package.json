@@ -9,10 +9,10 @@
     "prebuild": "npm run clean",
     "build": "npm-run-all build:* nhs-assets",
     "build:eleventy": "eleventy",
-    "build:webpack": "webpack",
+    "build:webpack": "webpack --mode=production",
     "predev": "npm run clean",
     "dev": "npm-run-all --parallel dev:* nhs-assets",
-    "dev:webpack": "webpack --watch",
+    "dev:webpack": "webpack --watch --mode=development",
     "dev:eleventy": "cross-env ELEVENTY_ENV=development eleventy --serve --watch",
     "nhs-assets": "cpy node_modules/nhsuk-frontend/packages/assets/**/*.* dist",
     "start": "npm run dev"
