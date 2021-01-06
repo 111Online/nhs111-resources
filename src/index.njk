@@ -1,46 +1,37 @@
 ---
 title: Home
 sections:
-  - heading: Intro to implementation
-    content: <p>A slide-pack covering an overview of 111 online, high-level service data and indicative steps to enacting a successful implementation.</p>
-    resource:
-      image: images/intro_to_implementation.png
-      link:
-        text: Download intro to implementation
-        href: files/Overview_111_online_imp_2018-2.pdf
-  - heading: NHS 111 online Walkthrough
-    content: <p>A short video guide to the 111 online product.</p>
-    resource:
-      image: images/111_walkthrough_video.png
-      link:
-        href: files/NHS 111 online - walkthrough.avi
-        text: Watch 111 online walkthrough
+  -
+    heading: Implementation
+    href: /implementation
+    description: A quick guide for people who have care and support needs and their carers
+  -
+    heading: Show and tells
+    description: A quick guide for people who have care and support needs and their carers
+  -
+    heading: Governance
+    description: A quick guide for people who have care and support needs and their carers
+  -
+    heading: Tools
+    description: DoS, ITK, and service change documents & tools
+  -
+    heading: Communications
+    description: Reusable templates for promoting 111 online
 ---
 
 {% from 'button/macro.njk' import button %}
+{% from 'card/macro.njk' import card %}
 
-<h1>111 online resources</h1>
-
-{% for section in sections -%}
-
-  <div class="nhsuk-grid-row">
-    
-    <div class="nhsuk-grid-column-one-half">
-      <img src="{{ section.resource.image | url }}" alt="">
-    </div>
-    <div class="nhsuk-grid-column-one-half">
-      <h2>{{section.heading}}</h2>
-      {{- section.content | safe -}}
-
-      {{- button({
-        "href": section.resource.link.href,
-        "text": section.resource.link.text,
-        "classes": "nhsuk-button--secondary"
-      }) -}}
-    </div>
-
-  </div>
-
-  <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
-
-{%- endfor -%}
+<ul class="nhsuk-grid-row nhsuk-card-group">  
+  {% for section in sections %}
+    <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">    
+      {{ card({
+        "href": section.href | url,
+        "clickable": "true",
+        "heading": section.heading,
+        "headingClasses": "nhsuk-heading-m",
+        "description": section.description
+      }) }}
+    </li>
+  {% endfor %}
+</ul>

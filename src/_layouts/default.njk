@@ -8,6 +8,8 @@
 {% from 'header/macro.njk' import header %}
 {% from 'footer/macro.njk' import footer %}
 {% from 'skip-link/macro.njk' import skipLink %}
+{% from 'hero/macro.njk' import hero %}
+{% from 'warning-callout/macro.njk' import warningCallout %}
 
 {% block header %}
   {{ skipLink({
@@ -16,22 +18,25 @@
   }) }}
 
   {{ header({
-    "service": {
-      "name": "111 online resources"
-    },
-    "showNav": "true",
-    "primaryLinks": [
-      {
-        "url"  : "https://111.nhs.uk",
-        "label" : "Go to 111 online"
-      }
-    ]
+    "organisation": {
+      "name": "NHS Digital"
+    }    
   }) }}
+
+  {{ hero({
+    "heading": "111 online resources",
+    "text": "Documentation, tools and resources for 111 online"
+    }) }}
 {% endblock %}
 
 {% block body %}
   <div class="nhsuk-width-container">
     <main class="nhsuk-main-wrapper" id="maincontent">     
+      {{ warningCallout({
+        "heading": "Important",        
+        "HTML": "<p>If you are looking for medical help please visit <a href=\"https://111.nhs.uk/\">111.nhs.uk</a></p>"
+      }) }}
+
       {{ content | safe }}
     </main>
   </div>    
