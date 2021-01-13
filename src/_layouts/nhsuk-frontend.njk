@@ -30,20 +30,19 @@
     <meta name="msapplication-square310x310logo" content="{{ baseUrl }}/assets/favicons/largetile-310x310.png">
 
     <meta property="og:url" content="https://nhsuk.github.io/nhsuk-frontend/">
-    <meta property="og:title" content="NHS 111 online resources">
+    <meta property="og:title" content="{{ title }} - NHS 111 online resources">
     <meta property="og:description" content="Publicly available information and resources about the NHS 111 online service">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ baseUrl }}/assets/logos/open-graph.png">
-    <meta property="og:image:alt" content="NHS">
+    <meta property="og:image:alt" content="NHS Digital">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@nhsuk">
-    <meta name="twitter:creator" content="@nhsuk">
+    <meta name="twitter:site" content="@NHSDigital">
+    <meta name="twitter:creator" content="@NHSDigital">
   </head>
 
   <body class="{{ body_class }}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-
       {% block header %}{% endblock %}
 
       {% block body %}{% endblock %}

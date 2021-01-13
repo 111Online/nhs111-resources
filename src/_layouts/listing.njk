@@ -1,0 +1,66 @@
+{% extends "./default.njk" %}
+{% from 'button/macro.njk' import button %}
+
+{% block content %}
+    {{ super() }}
+
+    {% for section in sections -%}
+        <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+        <div class="nhsuk-grid-row">
+
+            {% if section.youtube_id %}
+
+                <div class="nhsuk-grid-column-one-half">
+                    <div class="video video--16-9">
+                        <iframe class="video__content" width="560" height="315" src="https://www.youtube.com/embed/{{ section.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="nhsuk-grid-column-one-half">
+                    <h2>{{section.date}}</h2>
+
+                    {% if section.contents %}
+                        <ul class="list list-bullet">
+                            {% for description in section.contents %}
+                                <li>{{ description }}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {{- button({
+                        "href": "https://youtu.be/" + section.youtube_id ,
+                        "text": "View on YouTube",
+                        "classes": "nhsuk-button--secondary"
+                    }) -}}
+                </div>
+
+            {% else %}
+        
+                <div class="nhsuk-grid-column-one-half">
+                    <img src="{{ section.resource.image | url }}" alt="">
+                </div>
+                <div class="nhsuk-grid-column-one-half">
+                    <h2>{{section.heading}}</h2>
+
+                    {% if section.updated %}
+                        <p class="nhsuk-u-margin-bottom-0">Updated: {{ section.updated }}</p>
+                    {% endif %}
+
+                    {% if section.updated %}
+                        <p>Version: {{ section.version }}</p>
+                    {% endif %}
+
+                    {{- section.content | safe -}}
+
+                    {{- button({
+                        "href": section.resource.link.href | url,
+                        "text": section.resource.link.text,
+                        "classes": "nhsuk-button--secondary"
+                    }) -}}
+                </div>
+
+            {% endif %}
+        </div>
+
+    {%- endfor -%}
+{% endblock %}

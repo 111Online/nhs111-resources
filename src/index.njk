@@ -1,4 +1,5 @@
 ---
+layout: cards
 title: Home
 sections:
   -
@@ -7,31 +8,18 @@ sections:
     description: A quick guide for people who have care and support needs and their carers
   -
     heading: Show and tells
+    href: /show-and-tells
     description: A quick guide for people who have care and support needs and their carers
   -
     heading: Governance
+    href: /governance
     description: A quick guide for people who have care and support needs and their carers
   -
     heading: Tools
+    href: /tools
     description: DoS, ITK, and service change documents & tools
   -
     heading: Communications
+    href: /communications
     description: Reusable templates for promoting 111 online
 ---
-
-{% from 'button/macro.njk' import button %}
-{% from 'card/macro.njk' import card %}
-
-<ul class="nhsuk-grid-row nhsuk-card-group">  
-  {% for section in sections %}
-    <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">    
-      {{ card({
-        "href": section.href | url,
-        "clickable": "true",
-        "heading": section.heading,
-        "headingClasses": "nhsuk-heading-m",
-        "description": section.description
-      }) }}
-    </li>
-  {% endfor %}
-</ul>

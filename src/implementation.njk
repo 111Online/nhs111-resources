@@ -1,5 +1,6 @@
 ---
-title: Home
+layout: listing
+title: Implementation
 sections:
   - heading: Intro to implementation
     content: <p>A slide-pack covering an overview of 111 online, high-level service data and indicative steps to enacting a successful implementation.</p>
@@ -15,29 +16,25 @@ sections:
       link:
         href: /files/NHS 111 online - walkthrough.avi
         text: Watch 111 online walkthrough
+  - heading: Personal Demographics Service (PDS) Matching Demonstration
+    content: |
+              <p>A short video demonstrating how the 111 online product integrates with PDS to find patients.</p>
+              <p>note: This functionality went live on 28 June 2018.</p>
+    resource: 
+      image: /images/111_pds_video.png
+      link:
+        href: /files/PDS-Demo.avi
+        text: Watch PDS demo
+  - heading: 111 online outcome estimator
+    version: "3.0"
+    updated: "28/05/2020"
+    content: |
+              <p>Use this spreadsheet to estimate the potential distribution of 111 online dispositions and volumes of 111 online cases sent (by ITK) to clinical services in your area, including low-acuity ambulance and ED cases eligible for validation by a clinician.</p>
+              <p>Outcome distributions in version 3.0 is based on activity in January and February 2020. Uptake levels have also been updated to reflect growing use of the online channel.</p>
+    resource:
+      image: /images/Outcome_estimator_3.png
+      link:
+        href: /files/111 Online Outcome Estimator v3.0.xlsx
+        text: Download 111 online outcome estimator
+
 ---
-
-{% from 'button/macro.njk' import button %}
-{% for section in sections -%}
-
-  <div class="nhsuk-grid-row">
-    
-    <div class="nhsuk-grid-column-one-half">
-      <img src="{{ section.resource.image | url }}" alt="">
-    </div>
-    <div class="nhsuk-grid-column-one-half">
-      <h2>{{section.heading}}</h2>
-      {{- section.content | safe -}}
-
-      {{- button({
-        "href": section.resource.link.href | url,
-        "text": section.resource.link.text,
-        "classes": "nhsuk-button--secondary"
-      }) -}}
-    </div>
-
-  </div>
-
-  <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
-
-{%- endfor -%}

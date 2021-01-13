@@ -1,0 +1,28 @@
+{% extends "./default.njk" %}
+
+{% from 'button/macro.njk' import button %}
+{% from 'card/macro.njk' import card %}
+
+{% block header %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+
+    <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+    <ul class="nhsuk-grid-row nhsuk-card-group">  
+    {% for section in sections %}
+        <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">    
+        {{ card({
+            "href": section.href | url,
+            "clickable": "true",
+            "heading": section.heading,
+            "headingClasses": "nhsuk-heading-m",
+            "description": section.description
+        }) }}
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

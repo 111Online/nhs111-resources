@@ -32,12 +32,14 @@
 {% block body %}
   <div class="nhsuk-width-container">
     <main class="nhsuk-main-wrapper" id="maincontent">     
+      <h1>{{ title }}</h1>
+
       {{ warningCallout({
         "heading": "Important",        
         "HTML": "<p>If you are looking for medical help please visit <a href=\"https://111.nhs.uk/\">111.nhs.uk</a></p>"
-      }) }}
+      }) }}     
 
-      {{ content | safe }}
+      {% block content %}{{ content | safe }}{% endblock %}
     </main>
   </div>    
 {% endblock %}
