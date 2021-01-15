@@ -24,6 +24,10 @@ module.exports = function (eleventyConfig) {
     ])
   );
 
+  nunjucksEnvironment.addFilter("isArray", (something) =>
+    Array.isArray(something)
+  );
+
   eleventyConfig.setLibrary("njk", nunjucksEnvironment);
   eleventyConfig.htmlTemplateEngine = "njk";
   eleventyConfig.markdownTemplateEngine = "njk";

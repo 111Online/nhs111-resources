@@ -17,14 +17,18 @@
                     </div>
                 </div>
                 <div class="nhsuk-grid-column-one-half">
-                    <h2>{{section.date}}</h2>
+                    <h2>{{section.heading}}</h2>
 
-                    {% if section.contents %}
-                        <ul class="list list-bullet">
-                            {% for description in section.contents %}
-                                <li>{{ description }}
-                            {% endfor %}
-                        </ul>
+                    {% if section.content %}
+                        {% if section.content | isArray %}
+                            <ul class="list list-bullet">
+                                {% for description in section.content %}
+                                    <li>{{ description }}
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            {{- section.content | safe -}}
+                        {% endif %}
                     {% endif %}
 
                     {{- button({
