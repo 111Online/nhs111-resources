@@ -5,7 +5,7 @@
 
 {% set baseUrl = '/nhs111-resources' %}
 
-{% from 'header/macro.njk' import header %}
+{% from '_includes/header.njk' import header %}
 {% from 'footer/macro.njk' import footer %}
 {% from 'skip-link/macro.njk' import skipLink %}
 {% from 'hero/macro.njk' import hero %}
@@ -19,21 +19,46 @@
 
   {{ header({
     "homeHref": "/" | url,
-    "organisation": {
-      "name": "NHS Digital"
-    }    
+    "ariaLabel": "111 online resources homepage",
+    "classes": "nhsuk-header--white",
+    "service": {
+      "name": "111 online resources"
+    }
   }) }}
 
-  {{ hero({
+ 
+  {% if page.url == '/' %}
+    {% set heroTitleElement = 'h1' %}
+  {% else %}
+    {% set heroTitleElement = 'p' %}
+  {% endif %}
+
+  <section class="nhsuk-hero">
+    <div class="nhsuk-width-container nhsuk-hero--border">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper">
+            <{{ heroTitleElement }} class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">111 online resources</{{ heroTitleElement }}>
+            <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">Documentation, tools and resources for 111 online</p>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# {{ hero({
     "heading": "111 online resources",
     "text": "Documentation, tools and resources for 111 online"
-    }) }}
+    }) }} #}
+
 {% endblock %}
 
 {% block body %}
   <div class="nhsuk-width-container">
     <main class="nhsuk-main-wrapper" id="maincontent">     
-      <h1>{{ title }}</h1>
+      {% if page.url != '/' %}
+        <h1>{{ title }}</h1>
+      {% endif %}
 
       {{ warningCallout({
         "heading": "Important",        
