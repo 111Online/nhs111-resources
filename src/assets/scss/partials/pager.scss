@@ -1,0 +1,47 @@
+.pager {
+  @include clearfix;
+  margin-top: nhsuk-spacing(6);
+  margin-bottom: nhsuk-spacing(6);
+
+  a {
+    color: $color_nhsuk-blue;
+    @include nhsuk-typography-responsive(19);
+  }
+}
+
+.pager__summary {
+  float: left;
+}
+
+.pager__items {
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline;
+    margin: 0 5px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.pager__prev,
+.pager__next {
+  margin-right: 10px;
+}
+
+.pager__next {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+.pager__controls {
+  float: right;
+}

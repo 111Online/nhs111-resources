@@ -2,17 +2,10 @@ const Nunjucks = require("nunjucks");
 const path = require("path");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.setTemplateFormats([
-    "njk",
-    "md",
-    "png",
-    "jpg",
-    "pdf",
-    "avi",
-    "xlsx",
-    "docx",
-    "pptx",
-  ]);
+  eleventyConfig.setTemplateFormats(["njk", "md"]);
+
+  eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/files");
 
   const nunjucksEnvironment = new Nunjucks.Environment(
     new Nunjucks.FileSystemLoader([

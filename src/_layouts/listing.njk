@@ -5,7 +5,9 @@
     {{ super() }}
 
     {% for section in sections -%}
-        <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+        {% if loop.first == false %}
+            <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+        {% endif %}
 
         <div class="nhsuk-grid-row">
 

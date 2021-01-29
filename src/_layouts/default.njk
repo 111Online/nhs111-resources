@@ -23,7 +23,7 @@
     "classes": "nhsuk-header--white"
   }) }}
 
- 
+
   {% if page.url == '/' %}
     {% set heroTitleElement = 'h1' %}
   {% else %}
@@ -36,7 +36,7 @@
         <div class="nhsuk-grid-column-two-thirds">
           <div class="nhsuk-hero__wrapper">
             <{{ heroTitleElement }} class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">111 online resources</{{ heroTitleElement }}>
-            <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">Documentation, tools and resources for 111 online</p>            
+            <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">Documentation, tools and resources for 111 online</p>
           </div>
         </div>
       </div>
@@ -52,19 +52,19 @@
 
 {% block body %}
   <div class="nhsuk-width-container">
-    <main class="nhsuk-main-wrapper" id="maincontent">     
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      {{ warningCallout({
+        "heading": "Important",
+        "HTML": "<p>If you are looking for medical help please visit <a href=\"https://111.nhs.uk/\">111.nhs.uk</a></p>"
+      }) }}
+
       {% if page.url != '/' %}
         <h1>{{ title }}</h1>
       {% endif %}
 
-      {{ warningCallout({
-        "heading": "Important",        
-        "HTML": "<p>If you are looking for medical help please visit <a href=\"https://111.nhs.uk/\">111.nhs.uk</a></p>"
-      }) }}     
-
       {% block content %}{{ content | safe }}{% endblock %}
     </main>
-  </div>    
+  </div>
 {% endblock %}
 
 {% block footer %}{{ footer() }}{% endblock %}
