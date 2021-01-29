@@ -14,7 +14,7 @@
     "dev": "npm-run-all --parallel dev:* nhs-assets",
     "dev:webpack": "webpack --watch --mode=development",
     "dev:eleventy": "cross-env ELEVENTY_ENV=development eleventy --serve --watch",
-    "nhs-assets": "cpy node_modules/nhsuk-frontend/packages/assets/**/*.* dist",
+    "nhs-assets": "cpx node_modules/nhsuk-frontend/packages/assets/**/*.* dist/assets",
     "start": "npm run dev"
   },
   "dependencies": {
@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.12.10",
     "babel-loader": "^8.2.2",
     "core-js": "^3.8.1",
-    "cpy-cli": "^3.1.1",
+    "cpx": "^1.5.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "cssnano": "^4.1.10",
