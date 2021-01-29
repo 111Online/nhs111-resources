@@ -14,7 +14,7 @@
     "dev": "npm-run-all --parallel dev:* nhs-assets",
     "dev:webpack": "webpack --watch --mode=development",
     "dev:eleventy": "cross-env ELEVENTY_ENV=development eleventy --serve --watch",
-    "nhs-assets": "cpx node_modules/nhsuk-frontend/packages/assets/**/*.* dist/assets",
+    "nhs-assets": "cpx 'node_modules/nhsuk-frontend/packages/assets/**/*.*' 'dist/assets'",
     "start": "npm run dev"
   },
   "dependencies": {
