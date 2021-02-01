@@ -1,6 +1,6 @@
 {% extends "./default.njk" %}
 {% from 'button/macro.njk' import button %}
-{% from '_includes/release-note.njk' import release_note %}
+{% from '_includes/product-update.njk' import product_update %}
 
 {% block content %}
   {{ super() }}
@@ -41,7 +41,7 @@
   <ol class="nhsuk-list">
     {% for item in pagination.items -%}
       <li class="nhsuk-u-padding-bottom-9">
-        {{ release_note(item) }}
+        {{ product_update(item) }}
 
         {# <div class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible"></div> #}
       </li>

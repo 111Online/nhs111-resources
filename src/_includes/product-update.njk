@@ -1,6 +1,6 @@
 {% from "summary-list/macro.njk" import summaryList %}
 
-{% macro release_note(note, teaser=true) %}
+{% macro product_update(note, teaser=true) %}
   <article>
     <h2 class="nhsuk-u-margin-bottom-0">
       {% if teaser %}<a href="{{ note.url | url }}">{% endif %}

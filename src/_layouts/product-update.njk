@@ -1,9 +1,9 @@
 {% extends "./default.njk" %}
 {% from 'button/macro.njk' import button %}
-{% from '_includes/release-note.njk' import release_note %}
+{% from '_includes/product-update.njk' import product_update %}
 
 {% block content %}
-  {{ release_note({
+  {{ product_update({
     data: {
       contact: contact,
       date: date,
