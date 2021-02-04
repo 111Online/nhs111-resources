@@ -9,7 +9,7 @@
     </h2>
 
     {% set date %}
-      <time datetime="{{ note.data.date.toUTCString() }}">{{ note.data.date.toLocaleString() }}</time>
+      <time datetime="{{ note.data.date.toUTCString() }}">{{ note.data.date.toLocaleString('en-GB') }}</time>
     {% endset %}
 
     {% set contact %}
