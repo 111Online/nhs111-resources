@@ -24,6 +24,7 @@ function onPlayerStateChange(event) {
         eventLabel: event.target.getVideoData().title,
       });
       break;
+
     case 2: // paused
       ga("send", {
         hitType: "event",
