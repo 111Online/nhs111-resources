@@ -5,7 +5,7 @@ title: "Provider out-of-service: planned and unplanned downtime"
 
 When an urgent care provider goes out of service, whether expected or not, in addition to informing NHSE of your NHS 111 downtime (using the currently agreed change advisory board procedures), local teams can act themselves to stop receiving referrals from NHS 111 online during the outage.
 
-These instructions explain how providers can stop receiving cases from [NHS 111 online](111.nhs.uk) during a service outage. This can be managed locally by editing profiles in the Directory of Services (DoS).
+These instructions explain how providers can stop receiving cases from [NHS 111 online](https://111.nhs.uk) during a service outage. This can be managed locally by editing profiles in the Directory of Services (DoS).
 
 ## Planned Downtime
 
