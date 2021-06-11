@@ -1,4 +1,7 @@
-# Provider out-of-service: planned and unplanned downtime
+---
+title: "Provider out-of-service: planned and unplanned downtime"
+
+---
 
 When an urgent care provider goes out of service, whether expected or not, in addition to informing NHSE of your NHS 111 downtime (using the currently agreed change advisory board procedures), local teams can act themselves to stop receiving referrals from NHS 111 online during the outage.
 
