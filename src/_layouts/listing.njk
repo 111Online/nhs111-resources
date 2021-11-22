@@ -4,7 +4,40 @@
 {% block content %}
     {{ super() }}
 
-    {% for section in sections -%}
+    {% set pager %}
+    <nav class="pager" role="navigation" aria-label="Pagination">
+      <div class="pager__controls">
+
+        {% if pagination.href.previous %}
+          <a class="pager__prev" href="{{ pagination.href.previous | url }}" rel="prev">Prev</a>
+        {% endif %}
+
+        <ul class="pager__items">
+          {%- for pageEntry in pagination.pages %}
+            {% if page.url == pagination.hrefs[ loop.index0 ] %}
+              {% set current = true %}
+            {% else %}
+              {% set current = false %}
+            {% endif %}
+
+            <li{% if current %} aria-current="page"{% endif %}>
+              {% if not current %}<a href="{{ pagination.hrefs[ loop.index0 ] | url }}">{% endif %}
+                {{- loop.index -}}
+              {% if not current %}</a>{% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+
+        {% if pagination.href.next %}
+          <a class="pager__next" href="{{ pagination.href.next | url }}" rel="next">Next</a>
+        {% endif %}
+      </div>
+    </nav>
+  {% endset %}
+
+  {{ pager | safe }}
+
+    {% for section in pagination.items -%}
         {% if loop.first == false %}
             <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible nhsuk-u-margin-top-0">
         {% endif %}
@@ -69,4 +102,6 @@
         </div>
 
     {%- endfor -%}
+
+    {{ pager | safe }}
 {% endblock %}
