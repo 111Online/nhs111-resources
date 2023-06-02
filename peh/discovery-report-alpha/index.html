@@ -255,12 +255,11 @@ what joined-up encounter data for all care settings could look like.</p>
     } else {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'analytics_storage': 'denied'
-      });
       gtag('js', new Date());
-      gtag('config', 'G-MB536RT8CY',  { 'anonymize_ip': true });
+      gtag('config', 'G-MB536RT8CY',  {
+        'anonymize_ip': true,
+        'client_storage': 'none'
+      });
     }
   </script>
 
