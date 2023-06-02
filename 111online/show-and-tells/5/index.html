@@ -595,21 +595,20 @@
     </main>
   </div>
 
-  <script>    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MB536RT8CY"></script>
+  <script>
     if(window.location.hostname === "localhost") {
-      window.ga = function() { console.table(arguments); };
+      window.gtag = function() { console.table(arguments); };
     } else {
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied'
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-MB536RT8CY',  { 'anonymize_ip': true });
     }
-
-    ga('create', 'UA-198015292-1', {
-      'storage': 'none'
-    });
-    ga('set', 'anonymizeIp', true);
-    ga('send', 'pageview');    
   </script>
 
 
