@@ -8,29 +8,23 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 function onPlayerStateChange(event) {
   switch (event.data) {
     case 1: // playing
-      ga("send", {
-        hitType: "event",
-        eventCategory: "YouTube",
-        eventAction: "play",
-        eventLabel: event.target.getVideoData().title,
+      gtag("event", "play", {
+        event_category: "YouTube",
+        event_label: event.target.getVideoData().title,
       });
       break;
 
     case 0: // ended
-      ga("send", {
-        hitType: "event",
-        eventCategory: "YouTube",
-        eventAction: "ended",
-        eventLabel: event.target.getVideoData().title,
+      gtag("event", "ended", {
+        event_category: "YouTube",
+        event_label: event.target.getVideoData().title,
       });
       break;
 
     case 2: // paused
-      ga("send", {
-        hitType: "event",
-        eventCategory: "YouTube",
-        eventAction: "paused",
-        eventLabel: event.target.getVideoData().title,
+      gtag("event", "paused", {
+        event_category: "YouTube",
+        event_label: event.target.getVideoData().title,
       });
       break;
 
