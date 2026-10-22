@@ -1,0 +1,167 @@
+{% extends "./default-self-referral.njk" %}
+{% from 'button/macro.njk' import button %}
+{% from 'card/macro.njk' import card %}
+{% from "images/macro.njk" import image %}
+{% from "contents-list/macro.njk" import contentsList %}
+
+
+{% block content %}
+    {{ super() }}
+
+    <section class="nhsuk-section">
+        <ul class="nhsuk-grid-row nhsuk-card-group">  
+            {% for section in sections.slice(0, 4) %}
+                <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">    
+                {{ card({
+                    "href": section.href | url,
+                    "clickable": "true",
+                    "heading": section.heading,
+                    "headingClasses": "nhsuk-heading-m",
+                    "description": section.description,
+                    "variant": "primary"
+                }) }}
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+
+
+     <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible" >
+
+
+
+    <section class="nhsuk-section">
+        
+        <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">How does it work?</h1>
+        <p class="nhsuk-body">View the live self-referral pathway from 111 online.</p>
+
+        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1230394686?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title=0 frameborder="0" allow="autoplay; encrypted-media;" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="."></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+        
+        
+
+    </section>
+
+
+    <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+
+     <section class="nhsuk-section">   
+
+        <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">Our best case studies</h1>
+        <p class="nhsuk-body">Find out more about how trusts nationwide have introduced the pilot for their patients.</p>
+
+        {% for section in sections.slice(4, 6) -%}
+            {% if loop.first == false %}
+                <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible nhsuk-u-margin-top-0">
+            {% endif %}
+
+            <div class="nhsuk-grid-row">
+
+                {% if section.youtube_id %}
+
+                    <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-6">
+                        <div class="video video--16-9">
+                            <div class="video__content" id="player" data-youtube-id="{{ section.youtube_id }}" data-youtube-title="{{ section.heading }}"></div>
+                        </div>
+                    </div>
+                    <div class="nhsuk-grid-column-one-half">
+                        <h2>{{section.heading}}</h2>
+
+                        {% if section.content %}
+                            {% if section.content | isArray %}
+                                <ul class="list list-bullet">
+                                    {% for description in section.content %}
+                                        <li>{{ description }}
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                {{- section.content | safe -}}
+                            {% endif %}
+                        {% endif %}
+
+                        {{- button({
+                            "href": "https://youtu.be/" + section.youtube_id ,
+                            "text": "View on YouTube",
+                            "classes": "nhsuk-button--secondary"
+                        }) -}}
+                    </div>
+
+                {% else %}
+                    <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-6">
+                        <img src="{{ section.resource.image | url }}" alt="">
+                    </div>
+                    <div class="nhsuk-grid-column-one-half">
+                        <h2>{{section.heading}}</h2>
+
+                        {% if section.updated %}
+                            <p class="nhsuk-u-margin-bottom-0">Updated: {{ section.updated }}</p>
+                        {% endif %}
+
+                        {% if section.updated %}
+                            <p>Version: {{ section.version }}</p>
+                        {% endif %}
+
+                        {{- section.content | safe -}}
+
+                        {{- button({
+                            "href": section.resource.link.href | url,
+                            "text": section.resource.link.text,
+                            "classes": "nhsuk-button--secondary"
+                        }) -}}
+                    </div>
+
+                {% endif %}
+            </div>
+        {%- endfor -%}
+
+        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-1">Pilot sites</h2>
+        <p class="nhsuk-body">The following sites are piloting self-referrals for breast diagnostics clinics.</p>
+
+        <ul class="nhsuk-grid-row nhsuk-card-group">  
+            
+            {% for section in sections.slice(6, 10) %}
+                <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">    
+                    {{ card({
+                        clickable: false,
+                        "heading": section.heading,
+                        "headingClasses": "nhsuk-heading-s",
+                        "description": section.description,
+                        "variant": "secondary"
+                    }) }}
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+    </section>     
+
+
+    <section class="nhsuk-section">
+        
+        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Quick links</h2>
+
+            {{ contentsList({
+                items: [
+                    {
+                    href: "/nhs111-resources/111online/faqs",
+                    text: "FAQs",
+                    current: false
+                    },
+                    {
+                    href: "/nhs111-resources/111online/readiness",
+                    text: "Trust readiness checklist"
+                    },
+                    {
+                    href: "/nhs111-resources/111online/onboardingpack",
+                    text: "Onboarding pack"
+                    }
+                ]
+            }) }}
+    </section> 
+   
+   
+
+{% endblock %}

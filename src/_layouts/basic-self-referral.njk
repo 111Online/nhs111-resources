@@ -1,0 +1,86 @@
+---
+---
+
+{% extends "./nhsuk-frontend.njk" %}
+
+{% set baseUrl = '/nhs111-resources' %}
+
+{% from '_includes/header.njk' import header %}
+{% from 'footer/macro.njk' import footer %}
+{% from 'skip-link/macro.njk' import skipLink %}
+{% from 'hero/macro.njk' import hero %}
+{% from 'warning-callout/macro.njk' import warningCallout %}
+{% from "back-link/macro.njk" import backLink %}
+
+{% block header %}
+  {{ skipLink({
+    "href": "#maincontent",
+    "text": "Skip to main content"
+  }) }}
+
+  {{ header({
+    "homeHref": "/" | url,
+    "ariaLabel": "111 online resources homepage",
+    "classes": "nhsuk-header--white"
+  }) }}
+
+
+  {% if page.url == '/' %}
+    {% set heroTitleElement = 'h1' %}
+  {% else %}
+    {% set heroTitleElement = 'p' %}
+  {% endif %}
+
+  <section class="nhsuk-hero nhsuk-hero--image nhsuk-hero--image-description" style="background-image: url(/nhs111-resources/images/Hero-Image.png)">
+    <div class="nhsuk-hero__overlay">
+      <div class="nhsuk-width-container nhsuk-hero--border">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+            <div class="nhsuk-hero-content" style="background-color:#003087;" >
+                <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3"><span class="nhsuk-heading-s">UEC Digital Services</span>Breast self-referral pilot</h1
+                >
+                <p class="nhsuk-body-l nhsuk-u-margin-bottom-0"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}
+
+{% block body %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <hr class="nhsuk-section-break nhsuk-section-break--l" >
+      {% if page.url != '/' %}
+        {{ backLink({
+            href: "../selfreferral",
+            text: "Home"
+        }) }}
+        <h1 class="nhsuk-heading-xl">{{ title }}</h1>
+        <p class="nhsuk-body">{{ intro }}</p>
+      {% endif %}
+
+      {% block content %}{{ content | safe }}{% endblock %}
+    </main>
+  </div>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MB536RT8CY"></script>
+  <script>
+    if(window.location.hostname === "localhost") {
+      window.gtag = function() { console.table(arguments); };
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MB536RT8CY',  {
+        'anonymize_ip': true,
+        'client_storage': 'none'
+      });
+    }
+  </script>
+{% endblock %}
+
+{% block footer %}{{ footer() }}{% endblock %}

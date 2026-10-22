@@ -1,0 +1,50 @@
+{% extends "./basic-self-referral.njk" %}
+{% from "contents-list/macro.njk" import contentsList %}
+{% from "details/macro.njk" import details %}
+
+
+
+{% block content %}
+    {{ super() }}
+
+    <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+    <section class="nhsuk-section">
+
+        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">How does the pilot work?</h2>
+        <p class="nhsuk-body">View the live self-referral journey from 111 online to your service.</p>
+    
+        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1230394686?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title=0 frameborder="0" allow="autoplay; encrypted-media;" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="."></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>        
+
+    </section>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l" >     
+
+    <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+    <section class="nhsuk-section">
+        
+        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Quick links</h2>
+
+            {{ contentsList({
+                items: [
+                    {
+                    href: "/nhs111-resources/111online/faqs",
+                    text: "FAQs",
+                    current: false
+                    },
+                    {
+                    href: "/nhs111-resources/111online/readiness",
+                    text: "Trust readiness checklist"
+                    },
+                    {
+                    href: "/nhs111-resources/111online/onboardingpack",
+                    text: "Onboarding pack"
+                    }
+                ]
+            }) }}
+    </section> 
+   
+   
+
+{% endblock %}
