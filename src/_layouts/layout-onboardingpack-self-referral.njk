@@ -1,0 +1,101 @@
+{% extends "./basic-self-referral.njk" %}
+{% from "contents-list/macro.njk" import contentsList %}
+{% from "details/macro.njk" import details %}
+{% from "button/macro.njk" import button %}
+
+
+
+{% block content %}
+    {{ super() }}
+
+    <hr class="nhsuk-section-break nhsuk-section-break--xl">
+
+    <section class="nhsuk-section">
+
+        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">What's in the pack?</h2>
+        <ul>
+            <li>an overview of the pilot and why it matters </li>
+            <li>an overview of the onboarding journey</li>
+            <li>key roles and responsibilities</li>
+            <li>a trust readiness checklist - everything that needs to happen before go live</li>
+            <li>guidance on governance, data reporting, and communications</li>
+            <li>case study evidence from Manchester, Cambridge, and Somerset</li>
+        </ul>
+    
+
+    </section>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">    
+
+    <section class="nhsuk-section">
+
+        <div class="nhsuk-grid-row"  style="background-color:white;">
+            <hr class="nhsuk-section-break nhsuk-section-break--l" > 
+            <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-1">
+                <img src="/nhs111-resources/images/self-referral-files-package.webp" alt="">
+            </div>
+            <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-1">
+                <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Trust & Cancer Alliance Onboarding Pack</h2>
+                <p class="nhsuk-body">The primary onboarding pack for trusts and Cancer Alliances joining the pilot.</p>
+                <p class="nhsuk-body">Updated: 15/10/2026 Version: 1.0 </p>
+        
+                {# File removed pending content review - button kept but disabled until a replacement/decision is made #}
+                {{- button({
+                    "text": "Download onboarding pack",
+                    "classes": "nhsuk-button--secondary",
+                    "disabled": true
+                }) -}}
+            </div>
+        </div>
+
+
+    </section>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+    <section class="nhsuk-section">
+
+        <div class="nhsuk-grid-row">
+            <hr class="nhsuk-section-break nhsuk-section-break--l" > 
+            <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-1">
+                <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Check your trust's readiness</h2>
+                <p class="nhsuk-body">Everything that needs to be in place before go live.</p>
+        
+                {{- button({
+                    "href": "/nhs111-resources/111online/readiness",
+                    "text": "Trust readiness checklist",
+                    "classes": "nhsuk-button--secondary"
+                }) -}}
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+    <section class="nhsuk-section">
+        
+        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Quick links</h2>
+
+            {{ contentsList({
+                items: [
+                    {
+                    href: "/nhs111-resources/111online/faqs",
+                    text: "FAQs",
+                    current: false
+                    },
+                    {
+                    href: "/nhs111-resources/111online/demos",
+                    text: "Demos"
+                    },
+                    {
+                    href: "/nhs111-resources/111online/casestudies",
+                    text: "Case Studies"
+                    }
+                ]
+            }) }}
+    </section> 
+   
+   
+
+{% endblock %}
