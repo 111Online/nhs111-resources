@@ -9,8 +9,6 @@
 {% block content %}
     {{ super() }}
 
-    
-
     <section class="nhsuk-section">
 
         <div class="nhsuk-grid-row">
@@ -24,50 +22,35 @@
 
         <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
 
-        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-1">The checklist is intended for</h2>
-       
+        {# Who is this information for? #}
+        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">Who is this information for?</h2>
+        <p class="nhsuk-body">This guidance is intended for NHS Trusts, Cancer Alliances and clinical and operational leads involved in exploring or supporting the introduction of self-referral services.</p>
 
-        <hr class="nhsuk-section-break nhsuk-section-break--m ">
+        <hr class="nhsuk-section-break nhsuk-section-break--l">
 
-        <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-3"></h3>
-
-        
-        <ul class="nhsuk-grid-row nhsuk-card-group">  
-            <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">    
-                {{ card({
-                    clickable: false,
-                    "heading": "Trusts",
-                    "headingClasses": "nhsuk-heading-s",
-                    "variant": "secondary"
-                }) }}
-            </li>
-            <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">    
-                {{ card({
-                    clickable: false,
-                    "heading": "Cancer Alliances",
-                    "headingClasses": "nhsuk-heading-s",
-                    "variant": "secondary"
-                }) }}
-            </li>
-            <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">    
-                {{ card({
-                    clickable: false,
-                    "heading": "Clinical & operational leads",
-                    "headingClasses": "nhsuk-heading-s",
-                    "variant": "secondary"
-                }) }}
-            </li>
+        {# What does onboarding involve? #}
+        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">What does onboarding involve?</h2>
+        <p class="nhsuk-body">The onboarding process typically includes:</p>
+        <ul>
+            <li>Identifying key clinical and operational leads.</li>
+            <li>Understanding existing referral pathways and local processes.</li>
+            <li>Agreeing how self-referrals will be received, managed and processed.</li>
+            <li>Establishing clinical governance, safety and operational arrangements.</li>
+            <li>Agreeing data collection, reporting and communication requirements.</li>
+            <li>Completing pathway testing and confirming readiness for go-live.</li>
         </ul>
 
+        <hr class="nhsuk-section-break nhsuk-section-break--l">
 
+        {# Onboarding readiness checklist #}
         <div class="nhsuk-grid-row"  style="background-color:white;">
             <hr class="nhsuk-section-break nhsuk-section-break--l" > 
             <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-1">
                 <img src="/nhs111-resources/images/self-referral-trust-checklist.webp" alt="an image of a checklist with a woman and pencil in an illustrated style">
             </div>
             <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-1">
-                <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Trust readiness checklist</h2>
-                <p class="nhsuk-body">A checklist of all activities your trust needs to complete before going live.</p>
+                <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-2">Onboarding readiness checklist</h2>
+                <p class="nhsuk-body">The checklist outlines the key activities and requirements involved in preparing your organisation to introduce the service.</p>
         
                 {# File removed pending content review - button kept but disabled until a replacement/decision is made #}
                 {{- button({
@@ -77,23 +60,6 @@
                 }) -}}
             </div>
         </div>
-
-
-    </section>
-
-    <hr class="nhsuk-section-break nhsuk-section-break--l" >   
-
-    <section class="nhsuk-section">
-
-        <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">What the checklist covers</h2>
-        <ul>
-            <li>Identifying operation, clinical and onboarding leads</li>
-            <li>Completing AS-IS and TO-BE workshops with the NHS 111 team</li>
-            <li>Developing and approving a new standard operating procedure (SOP)</li>
-            <li>Agreeing data reporting, referral management, and communication approaches</li>
-            <li>Testing and confirming a go-live data</li>
-        </ul>
-    
 
     </section>
 
