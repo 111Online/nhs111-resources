@@ -50,16 +50,25 @@
 {% endblock %}
 
 {% block body %}
-    <!-- NEW LAYOUT IN USE -->
   <div class="nhsuk-width-container">
     <main class="nhsuk-main-wrapper" id="maincontent">
-      <hr class="nhsuk-section-break nhsuk-section-break--l" >
-      {{ backLink({
-          href: "/nhs111-resources/111online/breast-self-referral",
-          text: "Home"
-      }) }}
-      <h1 class="nhsuk-heading-xl">{{ title }}</h1>
-      <p class="nhsuk-body">{{ intro }}</p>
+      {% if landing %}
+        <hr class="nhsuk-section-break nhsuk-section-break--xl" >
+        {{ warningCallout({
+          "heading": "Important",
+          "HTML": "<p>If you are looking for medical help please visit <a href=\"https://111.nhs.uk/\">111.nhs.uk</a></p>"
+        }) }}
+        <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">{{ title }}</h1>
+        <p class="nhsuk-body nhsuk-u-margin-bottom-5">{{ intro }}</p>
+      {% else %}
+        <hr class="nhsuk-section-break nhsuk-section-break--l" >
+        {{ backLink({
+            href: "/nhs111-resources/111online/breast-self-referral",
+            text: "Home"
+        }) }}
+        <h1 class="nhsuk-heading-xl">{{ title }}</h1>
+        <p class="nhsuk-body">{{ intro }}</p>
+      {% endif %}
 
       {{ content | safe }}
     </main>
