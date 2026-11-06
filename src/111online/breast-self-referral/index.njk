@@ -1,0 +1,159 @@
+---
+layout: self-referral
+landing: true
+title: Learn about our self-referral pilots
+intro: The pilot enables eligible patients with symptoms to self-refer directly into specialist breast diagnostic services. It gives patients a faster, more direct way to access specialist care, without needing to see a GP first.
+sections:
+
+# Landing page: cards
+  - heading: Onboarding your service
+    href: /111online/breast-self-referral/onboarding
+    description: Information to help you get started, including an onboarding pack and readiness checklist.
+    
+  
+  - heading: Watch a demo
+    href: /111online/breast-self-referral/demo
+    description: See the digital journey users take from 111 online to specialist clinics.
+
+  - heading: Case studies
+    href: /111online/breast-self-referral/case-studies
+    description: Read about our current pilot sites and supporting data.
+
+  - heading: FAQs
+    href: /111online/breast-self-referral/faqs
+    description: Find answers to common questions about the self-referral into breast diagnostic clinics pilot.
+
+# Landing page: case studies from live sites    
+  - heading: Somerset
+    content: <p>Somerset NHS Foundation Trust was the first in England to join the self-referral pilot.</p>
+    resource:
+      image: /images/self-referral-trust-tile-Somerset.webp
+      link:
+        text: View case studies
+        href: /111online/breast-self-referral/case-studies#somerset
+
+  - heading: "Cambridge"
+    content: <p>Cambridge University Hospitals NHS Foundation Trust was the second site to join the pilot and promote the new self-referral route.</p>
+    resource:
+      image: /images/self-referral-trust-tile-Cambridge.webp
+      link:
+        text: View case studies
+        href: /111online/breast-self-referral/case-studies#cambridge
+
+
+  # Landing page: pilot sites
+  - heading: Somerset NHS Foundation Trust
+    sites:
+      - Musgrove
+      - Yeovil
+
+  - heading: Cambridge University Hospitals NHS Foundation Trust
+    sites:
+      - Addenbrooke's
+
+  - heading: North West Anglia NHS Foundation Trust
+    sites:
+      - Peterborough
+
+  - heading: Maidstone and Tunbridge Wells NHS Trust
+    sites:
+      - Maidstone
+      - Tunbridge Wells
+
+  - heading: Manchester University Foundation Trust
+    sites:
+      - North Manchester
+      - Wythenshawe
+
+
+  
+---
+
+{% from 'button/macro.njk' import button %}
+{% from 'card/macro.njk' import card %}
+
+<section class="nhsuk-section">
+    <ul class="nhsuk-grid-row nhsuk-card-group">
+        {% for section in sections.slice(0, 4) %}
+        <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+            {{ card({
+                "href": section.href | url,
+                "clickable": "true",
+                "heading": section.heading,
+                "headingClasses": "nhsuk-heading-m",
+                "description": section.description,
+                "variant": "primary"
+            }) }}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+<section class="nhsuk-section">
+
+    <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">How does it work?</h1>
+    <p class="nhsuk-body">View the live self-referral pathway from 111 online.</p>
+
+    <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+            src="https://player.vimeo.com/video/1230394686?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            title=0 frameborder="0" allow="autoplay; encrypted-media;" referrerpolicy="strict-origin-when-cross-origin"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;" title="."></iframe></div>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+
+</section>
+
+<hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+<section class="nhsuk-section">
+
+    <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-5">Case studies from live sites</h1>
+    <p class="nhsuk-body">Find out more about how trusts nationwide have introduced the pilot for their patients.</p>
+
+    {% for section in sections.slice(4, 6) -%}
+    {% if loop.first == false %}
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible nhsuk-u-margin-top-0">
+    {% endif %}
+
+    <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-6">
+            <img src="{{ section.resource.image | url }}" alt="">
+        </div>
+        <div class="nhsuk-grid-column-one-half">
+            <h2>{{ section.heading }}</h2>
+
+            {{- section.content | safe -}}
+
+            {{- button({
+                "href": section.resource.link.href | url,
+                "text": section.resource.link.text,
+                "classes": "nhsuk-button--secondary"
+            }) -}}
+        </div>
+    </div>
+    {%- endfor -%}
+
+    <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-1">Pilot sites</h2>
+    <p class="nhsuk-body">The following sites are piloting self-referrals for breast diagnostics clinics.</p>
+
+    <ul class="nhsuk-grid-row nhsuk-card-group">
+        {% for section in sections.slice(6) %}
+            {% set siteList %}
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                    {% for site in section.sites %}<li>{{ site }}</li>{% endfor %}
+                </ul>
+            {% endset %}
+            <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+                {{ card({
+                    clickable: false,
+                    "heading": section.heading,
+                    "headingClasses": "nhsuk-heading-s",
+                    "descriptionHtml": siteList,
+                    "variant": "secondary"
+                }) }}
+            </li>
+        {% endfor %}
+    </ul>
+
+</section>

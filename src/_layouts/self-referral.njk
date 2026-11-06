@@ -37,8 +37,7 @@
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-two-thirds">
             <div class="nhsuk-hero-content" style="background-color:#003087;" >
-                <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3"><span class="nhsuk-heading-l">111 online</span>Breast self-referral pilot</h1
-                >
+                <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3"><span class="nhsuk-heading-l">111 online</span>Breast self-referral pilot</h1>
                 <p class="nhsuk-body-l nhsuk-u-margin-bottom-0"></p>
             </div>
           </div>
@@ -53,17 +52,25 @@
 {% block body %}
   <div class="nhsuk-width-container">
     <main class="nhsuk-main-wrapper" id="maincontent">
-      <hr class="nhsuk-section-break nhsuk-section-break--l" >
-      {% if page.url != '/' %}
+      {% if landing %}
+        <hr class="nhsuk-section-break nhsuk-section-break--xl" >
+        {{ warningCallout({
+          "heading": "Important",
+          "HTML": "<p>If you are looking for medical help please visit <a href=\"https://111.nhs.uk/\">111.nhs.uk</a></p>"
+        }) }}
+        <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">{{ title }}</h1>
+        <p class="nhsuk-body nhsuk-u-margin-bottom-5">{{ intro }}</p>
+      {% else %}
+        <hr class="nhsuk-section-break nhsuk-section-break--l" >
         {{ backLink({
-            href: "../selfreferral",
+            href: "/nhs111-resources/111online/breast-self-referral",
             text: "Home"
         }) }}
         <h1 class="nhsuk-heading-xl">{{ title }}</h1>
         <p class="nhsuk-body">{{ intro }}</p>
       {% endif %}
 
-      {% block content %}{{ content | safe }}{% endblock %}
+      {{ content | safe }}
     </main>
   </div>
 
@@ -83,4 +90,19 @@
   </script>
 {% endblock %}
 
-{% block footer %}{{ footer() }}{% endblock %}
+{% block footer %}
+  {% set allLinks = [
+    { slug: "demo", URL: "/nhs111-resources/111online/breast-self-referral/demo", label: "Demos" },
+    { slug: "case-studies", URL: "/nhs111-resources/111online/breast-self-referral/case-studies", label: "Case studies" },
+    { slug: "faqs", URL: "/nhs111-resources/111online/breast-self-referral/faqs", label: "FAQs" },
+    { slug: "readiness", URL: "/nhs111-resources/111online/breast-self-referral/readiness", label: "Trust readiness checklist" },
+    { slug: "onboarding", URL: "/nhs111-resources/111online/breast-self-referral/onboarding", label: "Onboarding pack" }
+  ] %}
+  {% set footerLinks = [] %}
+  {% for link in allLinks %}
+    {% if link.slug != page.fileSlug %}
+      {% set _ = footerLinks.push({ URL: link.URL, label: link.label }) %}
+    {% endif %}
+  {% endfor %}
+  {{ footer({ links: footerLinks }) }}
+{% endblock %}

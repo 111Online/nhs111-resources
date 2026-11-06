@@ -1,0 +1,61 @@
+---
+layout: self-referral
+title: Preparing your organisation for onboarding
+intro: This page outlines the key requirements and activities involved in introducing NHS 111 online self-referral within your organisation. Our onboarding readiness checklist provides an overview of the operational, clinical, technical and governance arrangements that will need to be considered as part of the onboarding process. The NHS 111 online team will work with participating organisations throughout onboarding to support local planning, implementation and go-live preparations.
+---
+{% from "button/macro.njk" import button %}
+{% from 'card/macro.njk' import card %}
+
+<section class="nhsuk-section">
+
+    <div class="nhsuk-grid-row">
+        {{ card({
+                clickable: false,
+                "heading": "You do not need to do this alone. The NHS 111 online team will support you through every stage.",
+                "headingClasses": "nhsuk-heading-m",
+                "variant": "secondary"
+        }) }}
+    </div>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+    {# Who is this information for? #}
+    <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">Who is this information for?</h2>
+    <p class="nhsuk-body">This guidance is intended for NHS Trusts, Cancer Alliances and clinical and operational leads involved in exploring or supporting the introduction of self-referral services.</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l">
+
+    {# What does onboarding involve? #}
+    <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">What does onboarding involve?</h2>
+    <p class="nhsuk-body">The onboarding process typically includes:</p>
+    <ul>
+        <li>Identifying key clinical and operational leads.</li>
+        <li>Understanding existing referral pathways and local processes.</li>
+        <li>Agreeing how self-referrals will be received, managed and processed.</li>
+        <li>Establishing clinical governance, safety and operational arrangements.</li>
+        <li>Agreeing data collection, reporting and communication requirements.</li>
+        <li>Completing pathway testing and confirming readiness for go-live.</li>
+    </ul>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l">
+
+    {# Onboarding readiness checklist #}
+    <div class="nhsuk-grid-row"  style="background-color:white;">
+        <hr class="nhsuk-section-break nhsuk-section-break--l" >
+        <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-1">
+            <img src="/nhs111-resources/images/self-referral-trust-checklist.webp" alt="an image of a checklist with a woman and pencil in an illustrated style">
+        </div>
+        <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-1">
+            <h2 class="nhsuk-heading-l nhsuk-u-margin-bottom-2">Onboarding readiness checklist</h2>
+            <p class="nhsuk-body">The checklist outlines the key activities and requirements involved in preparing your organisation to introduce the service.</p>
+
+            {# File removed pending content review - button kept but disabled until a replacement/decision is made #}
+            {{- button({
+                "text": "Download checklist",
+                "classes": "nhsuk-button--secondary",
+                "disabled": true
+            }) -}}
+        </div>
+    </div>
+
+</section>
