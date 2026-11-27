@@ -59,7 +59,7 @@
           "HTML": "<p>If you are looking for medical help please visit <a href=\"https://111.nhs.uk/\">111.nhs.uk</a></p>"
         }) }}
         <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-3">{{ title }}</h1>
-        <p class="nhsuk-body nhsuk-u-margin-bottom-5">{{ intro }}</p>
+        <p class="nhsuk-body nhsuk-u-margin-bottom-5">{{ intro | safe }}</p>
       {% else %}
         <hr class="nhsuk-section-break nhsuk-section-break--l" >
         {{ backLink({
@@ -67,7 +67,7 @@
             text: "Home"
         }) }}
         <h1 class="nhsuk-heading-xl">{{ title }}</h1>
-        <p class="nhsuk-body">{{ intro }}</p>
+        {% if intro %}<p class="nhsuk-body">{{ intro | safe }}</p>{% endif %}
       {% endif %}
 
       {{ content | safe }}
